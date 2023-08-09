@@ -8,5 +8,5 @@ import ru.test.test.model.Count;
 public interface CountRepository extends JpaRepository<Count, Integer> {
     boolean existsByCounterId(String counterId);
 
-    Count findAllByCounterId(int counterId);
+    Count findAllByCounterId(String counterId);
 }

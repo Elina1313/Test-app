@@ -24,6 +24,6 @@ public class CountServiceImpl implements CountService {
 
     @Override
     public CountDto getCount(int counterId) {
-        return countMapper.countToDto(countRepository.findAllByCounterId(counterId));
+        return countMapper.countToDto(countRepository.findAllByCounterId(String.valueOf(counterId)));
     }
 }
