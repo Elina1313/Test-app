@@ -16,14 +16,14 @@ public class CountServiceImpl implements CountService {
 
     @Override
     public CountDto create(Count count) {
-        if(countRepository.existsByCounterId(count.getCounterId())){
+        if (countRepository.existsByCounterId(count.getCounterId())) {
             throw new CounterIdNotFoundException("That counterId is not exist");
         }
-        return  countMapper.countToDto(countRepository.save(count));
+        return countMapper.countToDto(countRepository.save(count));
     }
 
     @Override
     public CountDto getCount(int counterId) {
-        return null;
+        return countMapper.countToDto(countRepository.findAllByCounterId(counterId));
     }
 }

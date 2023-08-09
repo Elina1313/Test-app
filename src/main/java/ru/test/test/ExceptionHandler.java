@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 @RestControllerAdvice
 public class ExceptionHandler {
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     @org.springframework.web.bind.annotation.ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
