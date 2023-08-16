@@ -18,8 +18,8 @@ public class CountController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CountDto create(@Valid @RequestBody Count count) {
-        return countService.create(count);
+    public CountDto incrementCount(@Valid @RequestBody Count count) {
+        return countService.incrementCount(count);
     }
 
     @GetMapping("/{counterId}")

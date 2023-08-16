@@ -3,6 +3,7 @@ package ru.test.test.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.test.test.dto.CountDto;
+import ru.test.test.exception.CounterIDAndIncrementCountMismatchException;
 import ru.test.test.exception.CounterIdNotFoundException;
 import ru.test.test.mapper.CountMapper;
 import ru.test.test.model.Count;
@@ -15,9 +16,12 @@ public class CountServiceImpl implements CountService {
     private final CountMapper countMapper;
 
     @Override
-    public CountDto create(Count count) {
+    public CountDto incrementCount(Count count) {
         if (countRepository.existsByCounterId(count.getCounterId())) {
             throw new CounterIdNotFoundException("That counterId is not exist");
+        }
+        if (countRepository.existsByCounterId(count.getCounterId())) {
+            throw new CounterIDAndIncrementCountMismatchException("CounterID and/or incrementCount is not correct");
         }
         return countMapper.countToDto(countRepository.save(count));
     }
