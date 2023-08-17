@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import ru.test.test.exception.CounterIdNotFoundException;
+import ru.test.test.exception.CounterIDAndIncrementCountMismatchException;
+import ru.test.test.exception.CounterIdNotExistException;
 import ru.test.test.model.ErrorResponse;
 
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ErrorResponse handleUserNotExistException(final CounterIdNotFoundException exception) {
+    public ErrorResponse handleUserNotExistException(final CounterIdNotExistException exception) {
         return new ErrorResponse(exception.getMessage(), HttpStatus.NOT_FOUND.getReasonPhrase().toUpperCase(),
                 LocalDateTime.now().format(dateFormatter));
     }

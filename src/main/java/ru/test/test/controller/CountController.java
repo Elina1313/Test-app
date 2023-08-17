@@ -16,16 +16,16 @@ public class CountController {
 
     private CountService countService;
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public CountDto incrementCount(@Valid @RequestBody Count count) {
-        return countService.incrementCount(count);
-    }
-
     @GetMapping("/{counterId}")
     @ResponseStatus(HttpStatus.OK)
     public CountDto getCount(@PathVariable @Positive int counterId) {
         return countService.getCount(counterId);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public CountDto incrementCount(@Valid @RequestBody Count count) {
+        return countService.incrementCount(count);
     }
 
 }

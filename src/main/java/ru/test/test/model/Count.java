@@ -22,6 +22,5 @@ public class Count {
     @Column(nullable = false, length = 10)
     private String counterId;
 
-    @Column(nullable = false)
     private int incrementCount;
 }

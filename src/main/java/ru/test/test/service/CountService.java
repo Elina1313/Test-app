@@ -5,7 +5,7 @@ import ru.test.test.model.Count;
 
 public interface CountService {
 
-    CountDto incrementCount(Count count);
-
     CountDto getCount(int counterId);
+
+    CountDto incrementCount(Count count);
 }
